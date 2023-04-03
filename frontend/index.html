@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<script>
+async function findGpt(gpt){
+    // const materials=await fetch('http://localhost:8090/api/material-delivery/find-material-by-materialid',{
+    const gpts=await fetch('http://localhost:8090/api/gpt/find-gpt',{
+        method:'POST',
+        headers:{
+            'content-type':'application/json'
+        },
+        body:JSON.stringify({
+            gpt
+        })
+    })
+
+    return gpts.json()
+
+}
+
+async function addGpt(gpt){
+    const gpts=await fetch('http://localhost:8090/api/gpt/add-gpt',{
+        method:'POST',
+        headers:{
+            'content-type':'application/json'
+        },
+        body:JSON.stringify({
+            ...gpt
+        })
+    })
+
+    return gpts.json()
+}
+
+
+async function chatGpt(gpt){
+    const gpts=await fetch('http://localhost:8090/api/gpt/chat-gpt',{
+        method:'POST',
+        headers:{
+            'content-type':'application/json'
+        },
+        body:JSON.stringify({
+            ...gpt
+        })
+    })
+
+    return gpts.json()
+}
+
+
+
+findGpt('12q').then(data=>{
+    console.log(JSON.stringify(data,null,2))
+
+})
+
+
+addGpt({
+    prompt:'hi',
+    answer:'world'
+}).then(data=>{
+    console.log(JSON.stringify(data,null,2))
+
+})
+
+
+chatGpt({
+    question:'who are involved in this case', 
+    history:[]
+}).then(data=>{
+    console.log(JSON.stringify(data,null,2))
+
+})
+
+
+</script>
+</body>
+</html>

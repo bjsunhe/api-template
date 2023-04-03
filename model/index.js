@@ -1,9 +1,8 @@
 const mongoose=require('mongoose')
 const {dbUri} = require('../config/config.default')
 
-const materialDeliverySchema=require('./material-delivery-model')
-const oplMaterialBindingSchema=require('./opl-material-binding')
-const projectCostSchema=require('./project-cost-model')
+const gptSchema=require('./gpt')
+
 
 mongoose.connect(dbUri,{
     useNewUrlParser:true,
@@ -20,7 +19,5 @@ db.on('open',()=>{
 
 
 module.exports={
-    MaterialDelivery:mongoose.model('MaterialDelivery',materialDeliverySchema),
-    OplMaterialBinding:mongoose.model('OplMaterialBinding',oplMaterialBindingSchema),
-    ProjectCost:mongoose.model('ProjectCost',projectCostSchema)
+    Gpt:mongoose.model('Gpt',gptSchema)
 }
