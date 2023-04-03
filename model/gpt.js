@@ -1,5 +1,5 @@
-const mongoose = require('mongoose')
-const baseModel=require('./base-model')
+import mongoose from 'mongoose'
+import baseModel from './base-model.js'
 
 const gptSchema=new mongoose.Schema({
     ...baseModel,
@@ -12,4 +12,4 @@ const gptSchema=new mongoose.Schema({
 
 })
 
-module.exports=gptSchema
+export default gptSchema

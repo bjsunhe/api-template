@@ -1,4 +1,4 @@
-module.exports={
+export default {
     createdAt:{
         type:Date,
         default:Date.now

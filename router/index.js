@@ -1,7 +1,7 @@
-const express=require('express')
+import express from 'express'
 const router = express.Router()
-const gptRouter=require('./gpt')
+import gptRouter from './gpt.js'
 
 router.use('/gpt',gptRouter)
 
-module.exports=router
+export default router

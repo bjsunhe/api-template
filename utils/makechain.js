@@ -1,8 +1,8 @@
-const {OpenAIChat} = require('langchain/llms')
-const {LLMChain,ChatVectorDBQAChain,loadQAChain} = require('langchain/chains')
-const {PineconeStore} = require('langchain/vectorstores')
-const {PromptTemplate} = require('langchain/prompts')
-const {CallbackManager}  = require('langchain/callbacks')
+import {OpenAIChat} from 'langchain/llms'
+import {LLMChain,ChatVectorDBQAChain,loadQAChain} from 'langchain/chains'
+import {PineconeStore} from 'langchain/vectorstores'
+import {PromptTemplate} from 'langchain/prompts'
+import {CallbackManager}  from 'langchain/callbacks'
 
 
 const CONDENSE_PROMPT =
@@ -28,7 +28,7 @@ const QA_PROMPT = PromptTemplate.fromTemplate(
   );
 
   
-const makeChain=(vectorstore,onTokenStream)=>{
+export const makeChain=(vectorstore,onTokenStream)=>{
     const questionGenerator = new LLMChain({
         llm: new OpenAIChat({ temperature: 0 }),
         prompt: CONDENSE_PROMPT,
@@ -64,6 +64,3 @@ const makeChain=(vectorstore,onTokenStream)=>{
 
 
 
-module.exports={
-    makeChain
-}

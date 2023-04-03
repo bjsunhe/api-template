@@ -1,7 +1,7 @@
-const express=require('express')
+import express from 'express'
 const router=express.Router()
-const {body,validationResult}=require('express-validator')
-const {addGpt,findGpt,chatGpt} = require('../controller/gpt')
+import {body,validationResult} from 'express-validator'
+import {addGpt,findGpt,chatGpt} from  '../controller/gpt.js'
 
 router.post('/add-gpt',[],(req,res,next)=>{
     const errors=validationResult(req)
@@ -23,4 +23,4 @@ router.post('/chat-gpt',[],(req,res,next)=>{
     next()
 },chatGpt)
 
-module.exports=router
+export default router

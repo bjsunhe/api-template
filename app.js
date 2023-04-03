@@ -1,10 +1,11 @@
-const express = require('express')
-const cors = require('cors')
-require('./model')
-const router = require('./router')
-const errorHandler=require('./middleware/error-handler')
-const dotenv = require("dotenv")
+import express from 'express'
+import cors from 'cors'
+import model from './model/index.js'
+import router from './router/index.js'
+import errorHandler from './middleware/error-handler.js'
+import dotenv from "dotenv"
 dotenv.config()
+console.log(process.env)
 
 const app = express()
 app.use(cors())

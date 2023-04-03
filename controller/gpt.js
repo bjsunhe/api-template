@@ -1,18 +1,18 @@
-const {Gpt} = require('../model')
+import model from '../model/index.js'
 
-const { OpenAIEmbeddings } =require('langchain/embeddings');
-const { PineconeStore } = require('langchain/vectorstores');
-const { makeChain } = require('../utils/makechain');
-const { pinecone } = require('../utils/pinecone-client');
-const { PINECONE_INDEX_NAME, PINECONE_NAME_SPACE } = require('../config/pinecone');
+import { OpenAIEmbeddings } from 'langchain/embeddings'
+import  { PineconeStore }  from 'langchain/vectorstores'
+import { makeChain } from '../utils/makechain.js'
+import { pinecone } from '../utils/pinecone-client.js'
+import { PINECONE_INDEX_NAME, PINECONE_NAME_SPACE } from '../config/pinecone.js'
 
-const addGpt=async (req,res,next)=>{
+export const addGpt=async (req,res,next)=>{
 
     let gptEntry={
         ...req.body
     }
 
-    let gptData=new Gpt(gptEntry)
+    let gptData=new model.Gpt(gptEntry)
 
     await gptData.save()
 
@@ -26,9 +26,9 @@ const addGpt=async (req,res,next)=>{
 
 
 
-const findGpt=async (req,res,next)=>{
+export const findGpt=async (req,res,next)=>{
     const reqGpt=req.body.gpt
-    let Gpts=await Gpt.find({
+    let Gpts=await model.Gpt.find({
         
     })
 
@@ -37,7 +37,7 @@ const findGpt=async (req,res,next)=>{
     })
 }
 
-const chatGpt=async (req,res,next)=>{
+export const chatGpt=async (req,res,next)=>{
     const { question, history } = req.body;
     const sanitizedQuestion = question.trim().replaceAll('\n', ' ');
     const index = pinecone.Index(PINECONE_INDEX_NAME);
@@ -79,9 +79,4 @@ const chatGpt=async (req,res,next)=>{
     }
 }
 
-module.exports={
-    addGpt,
-    findGpt,
-    chatGpt
-}
 

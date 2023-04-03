@@ -1,6 +1,6 @@
-const util = require('util')
+import util from 'util'
 
-module.exports=()=>{
+export default ()=>{
     return (err,req,res,next)=>{
         res.status(500).json({
             err:util.format(err)

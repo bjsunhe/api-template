@@ -1,7 +1,7 @@
-const mongoose=require('mongoose')
-const {dbUri} = require('../config/config.default')
+import mongoose from 'mongoose'
+import dbUri from '../config/config.default.js'
 
-const gptSchema=require('./gpt')
+import gptSchema from './gpt.js'
 
 
 mongoose.connect(dbUri,{
@@ -18,6 +18,8 @@ db.on('open',()=>{
 })
 
 
-module.exports={
+const model = {
     Gpt:mongoose.model('Gpt',gptSchema)
 }
+
+export default  model
