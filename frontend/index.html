@@ -10,7 +10,7 @@
 <script>
 async function findGpt(gpt){
     // const materials=await fetch('http://localhost:8090/api/material-delivery/find-material-by-materialid',{
-    const gpts=await fetch('http://localhost:8090/api/gpt/find-gpt',{
+    const gpts=await fetch('http://8.222.215.247:8090/api/gpt/find-gpt',{
         method:'POST',
         headers:{
             'content-type':'application/json'
@@ -25,7 +25,7 @@ async function findGpt(gpt){
 }
 
 async function addGpt(gpt){
-    const gpts=await fetch('http://localhost:8090/api/gpt/add-gpt',{
+    const gpts=await fetch('http://8.222.215.247:8090/api/gpt/add-gpt',{
         method:'POST',
         headers:{
             'content-type':'application/json'
@@ -40,7 +40,7 @@ async function addGpt(gpt){
 
 
 async function chatGpt(gpt){
-    const gpts=await fetch('http://localhost:8090/api/gpt/chat-gpt',{
+    const gpts=await fetch('http://8.222.215.247:8090/api/gpt/chat-gpt',{
         method:'POST',
         headers:{
             'content-type':'application/json'
@@ -58,7 +58,7 @@ async function chatGpt(gpt){
 
 
 findGpt('12q').then(data=>{
-    console.log(JSON.stringify(data,null,2))
+    console.log(data)
 
 })
 
@@ -67,16 +67,16 @@ addGpt({
     prompt:'hi',
     answer:'world'
 }).then(data=>{
-    console.log(JSON.stringify(data,null,2))
+    console.log(data)
 
 })
 
 
 chatGpt({
-    question:'who are involved in this case', 
-    history:[]
+    question: 'fine. who is MORSE?', 
+    history:['who are involved in this case','who is Kenneth']
 }).then(data=>{
-    console.log(JSON.stringify(data,null,2))
+    console.log(data)
 
 })
 
