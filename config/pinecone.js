@@ -7,5 +7,5 @@ if (!process.env.PINECONE_INDEX_NAME) {
   
   export const PINECONE_INDEX_NAME = process.env.PINECONE_INDEX_NAME ?? '';
   
-  export const PINECONE_NAME_SPACE = 'pdf-test'; //namespace is optional for your vectors
+  export const PINECONE_NAME_SPACE = 'markdown-expo-test'; //namespace is optional for your vectors
 
