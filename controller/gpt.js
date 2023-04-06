@@ -25,7 +25,7 @@ export const addGpt = async (req, res, next) => {
 };
 
 export const findGpt = async (req, res, next) => {
-  const reqGpt = req.body.gpt;
+//   const reqGpt = req.body.gpt;
   let Gpts = await model.Gpt.find({});
 
   res.status(200).json({
@@ -67,6 +67,16 @@ export const chatGpt = async (req, res, next) => {
     });
 
     console.log("response", response);
+
+    
+    let gptData = new model.Gpt({
+        response:response,
+        question,
+        chat_history
+    });
+
+    await gptData.save();
+
     sendData(JSON.stringify({ sourceDocs: response.sourceDocuments }));
   } catch (error) {
     console.log("error", error);

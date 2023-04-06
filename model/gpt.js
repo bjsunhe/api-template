@@ -3,13 +3,16 @@ import baseModel from './base-model.js'
 
 const gptSchema=new mongoose.Schema({
     ...baseModel,
-    prompt:{
+    response:{
+        type:Object
+    },
+    question:{
         type:String
     },
-    answer:{
-        type:String
+    chat_history:{
+        type:Array
     }
-
+    
 })
 
 export default gptSchema
