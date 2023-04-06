@@ -34,6 +34,7 @@ export const findGpt = async (req, res, next) => {
 };
 
 export const chatGpt = async (req, res, next) => {
+  console.log('in chat')
   const { question, history } = req.body;
   const sanitizedQuestion = question.trim().replaceAll("\n", " ");
   const index = pinecone.Index(PINECONE_INDEX_NAME);
