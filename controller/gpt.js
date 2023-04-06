@@ -71,8 +71,8 @@ export const chatGpt = async (req, res, next) => {
     
     let gptData = new model.Gpt({
         response:response,
-        question,
-        chat_history
+        question: sanitizedQuestion,
+        chat_history: history || [],
     });
 
     await gptData.save();
