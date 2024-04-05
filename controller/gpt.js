@@ -39,7 +39,7 @@ export const chatGpt = async (req, res, next) => {
   const sanitizedQuestion = question.trim().replaceAll("\n", " ");
   const index = pinecone.Index(PINECONE_INDEX_NAME);
   const vectorStore = await PineconeStore.fromExistingIndex(
-    new OpenAIEmbeddings({}),
+    new OpenAIEmbeddings({modelName:'text-embedding-3-large'}),
     {
       pineconeIndex: index,
       textKey: "text",
@@ -55,7 +55,7 @@ export const chatGpt = async (req, res, next) => {
   const sendData = (data) => {
     res.write(`data: ${data}\n\n`);
   };
-  sendData(JSON.stringify({ data: "" }));
+  // sendData(JSON.stringify({ data: "" }));
   const chain = makeChain(vectorStore, (token) => {
     sendData(JSON.stringify({ data: token }));
   });
