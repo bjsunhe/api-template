@@ -6,25 +6,25 @@ import {CallbackManager}  from 'langchain/callbacks'
 
 
 const CONDENSE_PROMPT =
-  PromptTemplate.fromTemplate(`鉴于以下对话和后续问题，将后续问题改写为独立问题。
+  PromptTemplate.fromTemplate(`Given the following conversation and a follow up question, rephrase the follow up question to be a standalone question.
 
-  聊天记录：
-{chat_history}
-跟进输入: {question}
-独立问题:`);
+  Chat History:
+  {chat_history}
+  Follow Up Input: {question}
+  Standalone question:`);
 
 
 const QA_PROMPT = PromptTemplate.fromTemplate(
-    `您是提供有用建议的 AI 助手。 您将获得一份长文档的以下提取部分和一个问题。 根据提供的上下文提供对话答案。 
-    您应该只提供引用以下上下文的超链接。 不要组成超链接。
-    如果您在下面的上下文中找不到答案，只需说“嗯，我不确定。” 不要试图编造答案。
-    如果问题与上下文无关，请礼貌地回答你只能回答与上下文相关的问题。
+  `You are an AI assistant providing helpful advice. You are given the following extracted parts of a long document and a question. Provide a conversational answer based on the context provided.
+  You should only provide hyperlinks that reference the context below. Do NOT make up hyperlinks.
+  If you can't find the answer in the context below, just say "Hmm, I'm not sure." Don't try to make up an answer.
+  If the question is not related to the context, politely respond that you are tuned to only answer questions that are related to the context.
   
-  问题: {question}
+  Question: {question}
   =========
   {context}
   =========
-  用 Markdown回答:`,
+  Answer in Markdown:`,
   );
 
   
